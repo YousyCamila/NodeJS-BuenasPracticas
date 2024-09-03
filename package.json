@@ -1,0 +1,31 @@
+{
+  "name": "nodejs_express_mongo",
+  "version": "1.0.0",
+  "description": "Laboratorio API REST con MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/YousyCamila/NodeJS-BuenasPracticas.git)"
+  },
+  "keywords": [
+    "NodeJS",
+    "Express",
+    "MongoDB",
+    "API",
+    "REST",
+    "Backend"
+  ],
+  "author": "Danna Camila Guerra Rincon",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "express": "^4.19.2",
+    "mongoose": "^8.6.1"
+  }
+}
