@@ -1,26 +1,27 @@
-const usuarios = require('./controllers/usuarios');
-const cursos = require('./controllers/cursos');
-
 const express = require('express');
-const mongoose = require('mongoose');
+const connectDB = require('./database/db'); // Asegúrate de que la ruta sea correcta
+const cursosRoutes = require('./routes/cursos_routes');
+const usuariosRoutes = require('./routes/usuarios_routes');
+require('dotenv').config(); // Para cargar variables de entorno
 
-// Conexion a la base de datos MongoDB
-mongoose.connect('mongodb://localhost:27017/userscoursesdb')
-    .then(() => console.log('Conectado a MongoDB...'))
-    .catch(err => console.error('No se pudo conectar con MongoDB:', err));
-
-// Middleware 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware para parsear JSON
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
 
-//end points (recursos)
-app.use('/api/usuarios', usuarios);
-app.use('/api/cursos', cursos);
+// Conectar a la base de datos
+connectDB();
 
+// Integrar las rutas de cursos
+app.use('/api/cursos', cursosRoutes);
 
+// Integrar las rutas de usuarios
+app.use('/api/usuarios', usuariosRoutes);
 
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
-    console.log('API REST Ok, y ejecutándose...');
+// Iniciar el servidor
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+
