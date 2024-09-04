@@ -1,11 +1,17 @@
 const express = require('express');
-const cursosRoutes = require('./routes/cursos_routes'); // Importa las rutas de cursos
-const usuariosRoutes = require('./routes/usuarios_routes'); // Importa las rutas de usuarios
+const connectDB = require('./database/db'); // Asegúrate de que la ruta sea correcta
+const cursosRoutes = require('./routes/cursos_routes');
+const usuariosRoutes = require('./routes/usuarios_routes');
+require('dotenv').config(); // Para cargar variables de entorno
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
+
+// Conectar a la base de datos
+connectDB();
 
 // Integrar las rutas de cursos
 app.use('/api/cursos', cursosRoutes);
@@ -14,10 +20,8 @@ app.use('/api/cursos', cursosRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
 
 
