@@ -3,13 +3,16 @@ const connectDB = require('./database/db'); // Asegúrate de que la ruta sea cor
 const cursosRoutes = require('./routes/cursos_routes');
 const usuariosRoutes = require('./routes/usuarios_routes');
 const cors = require('cors');// Importa el meddleware para cors 
+const SwaggerUI = require('swagger-ui');
 require('dotenv').config(); // Para cargar variables de entorno
+const { swaggerUi, swaggerSpec} = require ('./swagger/swagger');//Importa swagger
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
+
 
 // Configurar CORS
 //app.use(cors()); // Habilita CORS con configuración predeterminada
@@ -21,6 +24,13 @@ const corsOptions = {
 };
 app.use(cors(corsOptions)); // Habilita CORS con las opciones específicas
 app.options('*',cors(corsOptions));
+
+
+// Rutas de Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+
 
 // Conectar a la base de datos
 connectDB();
