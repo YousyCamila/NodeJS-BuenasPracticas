@@ -1,5 +1,5 @@
 const express = require('express');
-const usuarioController = require('../controllers/usuarios_controller'); // Importa los controladores
+const usuarioController = require('../controllers/usuarios'); // Importa los controladores
 const router = express.Router();
 
 // Listar usuarios activos

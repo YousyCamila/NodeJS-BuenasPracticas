@@ -1,5 +1,5 @@
-const logic = require('../logic/curso_logic');
-const { cursoSchemaValidation } = require('../validations/curso_validations');
+const logic = require('../logic/cursos_logic');
+const { cursoSchemaValidation } = require('../validaciones/curso_validations');
 
 // Controlador para listar los cursos activos
 const listarCursosActivos = async (req, res) => {

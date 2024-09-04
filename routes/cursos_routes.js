@@ -1,5 +1,5 @@
 const express = require('express');
-const cursoController = require('../controllers/cursos_controller'); // Importa el controlador
+const cursoController = require('../controllers/cursos'); // Importa el controlador
 const router = express.Router(); // Define el enrutador
 
 // Listar todos los cursos activos
