@@ -366,6 +366,10 @@ router.post('/coleccion', usuarioController.guardarColeccionUsuarios);
  *           schema:
  *             type: object
  *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: "ana@example.com"
  *               nombre:
  *                 type: string
  *                 example: "Ana Gómez"
@@ -384,6 +388,7 @@ router.post('/coleccion', usuarioController.guardarColeccionUsuarios);
  *                   type: string
  *                   example: "60d21bb67c1b2c001f647b4e"
  *             required:
+ *               - email
  *               - nombre
  *               - password
  *     responses:
@@ -399,6 +404,7 @@ router.post('/coleccion', usuarioController.guardarColeccionUsuarios);
  *                   example: "60d21bb67c1b2c001f647b4e"
  *                 email:
  *                   type: string
+ *                   format: email
  *                   example: "ana@example.com"
  *                 nombre:
  *                   type: string
@@ -424,6 +430,7 @@ router.post('/coleccion', usuarioController.guardarColeccionUsuarios);
  *                 - "60d21bb67c1b2c001f647b4e"
  *                 - "60d21bb67c1b2c001f647b4f"
  */
+
 
 router.put('/:email', usuarioController.actualizarUsuario);
 

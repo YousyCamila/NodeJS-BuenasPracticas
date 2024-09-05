@@ -30,7 +30,7 @@ const usuarioSchemaValidation = Joi.object({
         .min(6)
         .max(30)
         .required()
-        .pattern(/^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;"'<>,.?~\-]{6,30}$/)
+        .pattern(/^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;"'<>,.?~\\-]{6,30}$/)
 
         .messages({
             'string.base': 'La contraseña debe ser un texto',
