@@ -474,24 +474,39 @@ router.put('/:email', usuarioController.actualizarUsuario);
 router.delete('/:email', usuarioController.desactivarUsuario);
 
 
+// Ruta para actualizar los cursos de un usuario
 /**
  * @swagger
- * /usuarios/{email}:
- *   delete:
- *     summary: Eliminar usuario
- *     description: Elimina un usuario del sistema basado en su correo electrónico.
- *     tags: ["Usuarios"]
+ * /usuarios/{email}/cursos:
+ *   put:
+ *     summary: Actualiza los cursos de un usuario
+ *     tags:
+ *       - Usuarios
+ *     description: Permite actualizar los cursos asociados a un usuario existente.
  *     parameters:
- *       - name: email
- *         in: path
- *         description: Correo electrónico del usuario a eliminar.
+ *       - in: path
+ *         name: email
  *         required: true
  *         schema:
  *           type: string
- *           example: "ana@example.com"
+ *           example: "juan.perez@example.com"
+ *         description: Correo electrónico del usuario cuyo listado de cursos será actualizado
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               cursos:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   example: "60d6d7e4f52e4d73d8f86077"
+ *                 description: IDs de los cursos que serán asignados al usuario
  *     responses:
  *       200:
- *         description: Usuario eliminado exitosamente.
+ *         description: Cursos actualizados correctamente
  *         content:
  *           application/json:
  *             schema:
@@ -499,9 +514,39 @@ router.delete('/:email', usuarioController.desactivarUsuario);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "Usuario eliminado exitosamente"
+ *                   example: "Cursos actualizados correctamente"
+ *                 usuario:
+ *                   type: object
+ *                   properties:
+ *                     email:
+ *                       type: string
+ *                       example: "juan.perez@example.com"
+ *                     nombre:
+ *                       type: string
+ *                       example: "Juan Pérez"
+ *                     cursos:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           _id:
+ *                             type: string
+ *                             example: "60d6d7e4f52e4d73d8f86077"
+ *                           titulo:
+ *                             type: string
+ *                             example: "Curso de Node.js"
+ *       400:
+ *         description: Error de validación
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "El array de cursos es requerido"
  *       404:
- *         description: Usuario no encontrado.
+ *         description: Usuario no encontrado
  *         content:
  *           application/json:
  *             schema:
@@ -511,7 +556,7 @@ router.delete('/:email', usuarioController.desactivarUsuario);
  *                   type: string
  *                   example: "Usuario no encontrado"
  *       500:
- *         description: Error interno del servidor.
+ *         description: Error interno del servidor
  *         content:
  *           application/json:
  *             schema:
@@ -519,9 +564,8 @@ router.delete('/:email', usuarioController.desactivarUsuario);
  *               properties:
  *                 error:
  *                   type: string
- *                   example: "Error interno del servidor"
+ *                   example: "Error al actualizar los cursos del usuario"
  */
 
-router.put('/:email/cursos', usuarioController.actualizarCursosDeUsuario);
-
+router.put('/:email/cursos', usuarioController.actualizarCursosDelUsuario);
 module.exports = router;

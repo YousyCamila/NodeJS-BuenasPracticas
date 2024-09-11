@@ -167,4 +167,4 @@ module.exports = {
     listarUsuarioActivos,
     guardarColeccionUsuarios,
     actualizarCursosDelUsuario
-};
+}
