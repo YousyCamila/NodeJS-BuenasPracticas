@@ -1,4 +1,5 @@
 const express = require('express');
+const seedDatabase = require('./seed/seeds')
 const connectDB = require('./database/db'); // Asegúrate de que la ruta sea correcta
 const cursosRoutes = require('./routes/cursos_routes');
 const usuariosRoutes = require('./routes/usuarios_routes');

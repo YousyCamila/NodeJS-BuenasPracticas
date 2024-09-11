@@ -473,4 +473,55 @@ router.put('/:email', usuarioController.actualizarUsuario);
  */
 router.delete('/:email', usuarioController.desactivarUsuario);
 
+
+/**
+ * @swagger
+ * /usuarios/{email}:
+ *   delete:
+ *     summary: Eliminar usuario
+ *     description: Elimina un usuario del sistema basado en su correo electrónico.
+ *     tags: ["Usuarios"]
+ *     parameters:
+ *       - name: email
+ *         in: path
+ *         description: Correo electrónico del usuario a eliminar.
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: "ana@example.com"
+ *     responses:
+ *       200:
+ *         description: Usuario eliminado exitosamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuario eliminado exitosamente"
+ *       404:
+ *         description: Usuario no encontrado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Usuario no encontrado"
+ *       500:
+ *         description: Error interno del servidor.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error interno del servidor"
+ */
+
+router.put('/:email/cursos', usuarioController.actualizarCursosDeUsuario);
+
 module.exports = router;

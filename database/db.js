@@ -4,7 +4,7 @@ require('dotenv').config(); // Cargar variables de entorno
 const connectDB = async () => {
   try {
     // Conexión a MongoDB sin opciones obsoletas
-    const conn = await mongoose.connect(process.env.MONGO_URI);
+    const conn = await mongoose.connect('mongodb://localhost:27017/userscoursesdb');
     console.log(`MongoDB conectado: ${conn.connection.host}`);
   } catch (err) {
     console.error('Error al conectar a MongoDB:', err.message);
