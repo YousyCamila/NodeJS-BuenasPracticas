@@ -144,6 +144,20 @@ async function listarCursosDeUsuario(usuarioId) {
     }
 }
 
+const actualizarCursosDelUsuario = async (email, cursos) => {
+    try {
+      const usuario = await Usuario.findOne({ email });
+      if (!usuario) {
+        throw new Error('Usuario no encontrado');
+      }
+      usuario.cursos = cursos; // Actualiza los cursos del usuario
+      await usuario.save();
+      return usuario;
+    } catch (error) {
+      throw new Error(error.message || 'Error al actualizar los cursos del usuario');
+    }
+  };
+
 module.exports = {
     agregarCursosAUsuario,
     listarCursosDeUsuario,
@@ -152,4 +166,5 @@ module.exports = {
     desactivarUsuario,
     listarUsuarioActivos,
     guardarColeccionUsuarios,
-};
+    actualizarCursosDelUsuario
+}
